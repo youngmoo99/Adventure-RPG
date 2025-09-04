@@ -11,21 +11,25 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: weaponDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.1
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: 1.68
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.48
+      value: -10.3
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalRotation.w
@@ -33,15 +37,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -93,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5b9b10c04d440409ecca0d193d677e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 10
+  healthPoints: 40
 --- !u!114 &1511389512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 4
   supspicionTime: 5
+  patrolPath: {fileID: 0}
+  waypointTolerance: 1
+  waypointDwellTime: 2
 --- !u!114 &2257351886020180104
 MonoBehaviour:
   m_ObjectHideFlags: 0
