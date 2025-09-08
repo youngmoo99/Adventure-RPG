@@ -8,7 +8,7 @@ namespace RPG.Cinematics
     public class CinematicTrigger : MonoBehaviour
     {
         bool alreadyTriggered = false;
-        void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (!alreadyTriggered && other.gameObject.tag == "Player")
             {
