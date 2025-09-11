@@ -61,6 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f6fc0cf5e5d31c458bc74ede87cb8ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &76461542240116111 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 76461542240179211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8980891882428124042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,6 +77,14 @@ PrefabInstance:
       propertyPath: weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 3697661547153998274, guid: b85639f860842b14ea3c1e06387dade8, type: 3}
+    - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 76461542240116111}
     - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1
@@ -98,23 +111,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9950283
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.09959245
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -11.431
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
