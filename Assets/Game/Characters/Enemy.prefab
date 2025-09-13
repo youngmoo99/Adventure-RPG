@@ -20,7 +20,19 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: b36fe1031084d7c409f79376138c5a2c, type: 2}
+    - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 7262181147811046877}
+    - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 7262181147811104223}
+    - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: rightHandTransform
       value: 
       objectReference: {fileID: 7262181147811046877}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
@@ -65,6 +77,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576049712992913337, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9207461745068963331, guid: 670ff199606273f4c8749400782eef08, type: 3}
@@ -201,5 +217,10 @@ PrefabInstance:
 --- !u!4 &7262181147811046877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+  m_PrefabInstance: {fileID: 7262181147811418835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7262181147811104223 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 481036, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
   m_PrefabInstance: {fileID: 7262181147811418835}
   m_PrefabAsset: {fileID: 0}

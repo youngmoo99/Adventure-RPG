@@ -61,6 +61,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f6fc0cf5e5d31c458bc74ede87cb8ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &76461542240058855 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 403948, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 76461542240179211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &76461542240116111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
@@ -86,6 +91,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3697661547153998274, guid: b85639f860842b14ea3c1e06387dade8, type: 3}
     - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d48fb120cea33446a6b14d3a071e2b3, type: 2}
+    - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: handTransform
       value: 
       objectReference: {fileID: 76461542240116111}
@@ -93,6 +102,14 @@ PrefabInstance:
       propertyPath: weaponOverride
       value: 
       objectReference: {fileID: 22100000, guid: cfee6e1783049cf4cb8594c55a5ff5b8, type: 2}
+    - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 76461542240058855}
+    - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 76461542240116111}
     - target: {fileID: 1306082688, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1
@@ -148,6 +165,10 @@ PrefabInstance:
     - target: {fileID: 4842972691216431620, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: uniqueIdentifier
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576049712992913337, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9207461745068963331, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_Name
