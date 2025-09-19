@@ -4,6 +4,7 @@ using RPG.Core;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Saving;
+using RPG.Resources;
 
 namespace RPG.Movement
 {
@@ -15,7 +16,8 @@ namespace RPG.Movement
         NavMeshAgent navMeshAgent;
         Health health;
 
-        private void Start() {
+        private void Start()
+        {
             navMeshAgent = GetComponent<NavMeshAgent>();
             health = GetComponent<Health>();
         }

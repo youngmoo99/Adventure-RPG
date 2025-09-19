@@ -1,7 +1,9 @@
 using UnityEngine;
 using RPG.Saving;
+using RPG.Stats;
+using RPG.Core;
 
-namespace RPG.Core
+namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
@@ -9,6 +11,10 @@ namespace RPG.Core
 
         bool isDead = false;
 
+        void Start()
+        {
+            healthPoints = GetComponent<BaseStats>().GetHealth();
+        }
         public bool IsDead()
         {
             return isDead;
@@ -23,6 +29,10 @@ namespace RPG.Core
             }
         }
 
+        public float GetPercentage()
+        {
+            return 100 * (healthPoints / GetComponent<BaseStats>().GetHealth()); //현재 체력 백분율
+        }
         private void Die()
         {
             if (isDead) return;
