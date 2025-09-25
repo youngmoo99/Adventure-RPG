@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using RPG.Resources;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -12,13 +11,26 @@ namespace RPG.Stats
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
 
-        void Update()
+        int currentLevel = 0;
+
+        private void Start()
         {
-            if (gameObject.tag == "Player")
+            currentLevel = CalculateLevel();
+            Experience experience = GetComponent<Experience>();
+            if (experience != null)
             {
-                print(GetLevel());
+                experience.onExperienceGained += UpdateLevel;
             }
-            
+        }
+
+        private void UpdateLevel()
+        {
+            int newLevel = CalculateLevel();
+            if (newLevel > currentLevel)
+            {
+                currentLevel = newLevel;
+                print("Levelled Up!");
+            }
         }
 
         public float GetStat(Stat stat)
@@ -28,12 +40,21 @@ namespace RPG.Stats
 
         public int GetLevel()
         {
+            if (currentLevel < 1)
+            {
+                currentLevel = CalculateLevel();
+            }
+            return currentLevel;
+        }
+
+        public int CalculateLevel()
+        {
             Experience experience = GetComponent<Experience>();
             if (experience == null) return startingLevel;
 
             float currentXP = experience.GetPoints();
             int penultimateLevel = progression.GetLevels(Stat.ExperienceToLevelUp, characterClass);
-            for (int level = 1; level < penultimateLevel; level++)
+            for (int level = 1; level <= penultimateLevel; level++)
             {
                 float XPToLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
                 if (XPToLevelUp > currentXP)
@@ -44,12 +65,5 @@ namespace RPG.Stats
 
             return penultimateLevel + 1;
         }
-
-        public float GetExperienceReward()
-        {
-            return 10;
-        }
-
     }
-
 }

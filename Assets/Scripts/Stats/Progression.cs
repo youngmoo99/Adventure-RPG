@@ -1,6 +1,6 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
 namespace RPG.Stats
 {
@@ -28,12 +28,12 @@ namespace RPG.Stats
         public int GetLevels(Stat stat, CharacterClass characterClass)
         {
             BuildLookup();
-            
+
             float[] levels = lookupTable[characterClass][stat];
             return levels.Length;
         }
 
-        void BuildLookup()
+        private void BuildLookup()
         {
             if (lookupTable != null) return;
 
@@ -42,6 +42,7 @@ namespace RPG.Stats
             foreach (ProgressionCharacterClass progressionClass in characterClasses)
             {
                 var statLookupTable = new Dictionary<Stat, float[]>();
+
                 foreach (ProgressionStat progressionStat in progressionClass.stats)
                 {
                     statLookupTable[progressionStat.stat] = progressionStat.levels;

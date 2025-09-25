@@ -1022,6 +1022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4049124579582048101, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5185359469315767526, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: weaponDamage
       value: 10
@@ -1584,6 +1588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 221371184062409671, guid: 3faf87ef4d430944aa2515c1c6423f82, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4602885832914118592, guid: 3faf87ef4d430944aa2515c1c6423f82, type: 3}
       propertyPath: uniqueIdentifier
       value: bf093e57-a35c-42bf-a496-d24023374f0e
@@ -1734,6 +1742,10 @@ PrefabInstance:
     - target: {fileID: 4049124579582048101, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: m_Name
       value: Tough Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049124579582048101, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5185359469315767526, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: weaponDamage
@@ -2105,6 +2117,10 @@ PrefabInstance:
     - target: {fileID: 4049124579582048101, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049124579582048101, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5185359469315767526, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: weaponDamage
@@ -3744,6 +3760,10 @@ PrefabInstance:
     - target: {fileID: 4049124579582048101, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049124579582048101, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5185359469315767526, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: defaultWeapon
