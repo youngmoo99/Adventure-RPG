@@ -170,10 +170,18 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6576049712992913337, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7768623170096677186, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: characterClass
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7768623170096677186, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: levelUpParticleEffect
+      value: 
+      objectReference: {fileID: 1835677015324248325, guid: 04be90d7ae196c748800241268594af5, type: 3}
     - target: {fileID: 9207461745068963331, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_Name
       value: Player
