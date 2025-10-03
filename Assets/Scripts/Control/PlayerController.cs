@@ -6,6 +6,8 @@ using System;
 using RPG.Combat;
 using RPG.Core;
 using RPG.Resources;
+using System.Data;
+using UnityEngine.EventSystems;
 
 namespace RPG.Control
 {
@@ -16,45 +18,63 @@ namespace RPG.Control
     public class PlayerController : MonoBehaviour
     {
         Health health;
+
+        [System.Serializable]
+        struct CursorMapping
+        {
+            public CursorType type;
+            public Texture2D texture;
+            public Vector2 hotspot;
+        }
+
+        [SerializeField] CursorMapping[] cursorMappings = null;
+
         void Awake()
         {
             health = GetComponent<Health>();
         }
         void Update()
-        {   
+        {
+            if (InteractWithUI()) return;
             // 죽었으면 입력 처리 중단
-            if (health.IsDead()) return;
-            // 전투 상호작용(타겟 클릭) 우선
-            if (InteractWithCombat()) return;
+            if (health.IsDead())
+            {   
+                SetCursor(CursorType.None);
+                return;
+            }
+
+            if (InteractWithComponent()) return;
             // 이동 상호작용(바닥 클릭)
             if (InteractWithMovement()) return;
+
+            SetCursor(CursorType.None);
         }
 
-        // 전투 상호작용 : 마우스 레이로 맞은 모든 것 검사후 CombatTarget 찾기
-        private bool InteractWithCombat()
+        private bool InteractWithComponent()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
             foreach (RaycastHit hit in hits)
             {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                // 전투 타겟이 아니면 패스
-                if (target == null) continue;
-
-                // 공격 가능 여부 검사
-                if (!GetComponent<Fighter>().CanAttack(target.gameObject))
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (IRaycastable raycastable in raycastables)
                 {
-                    continue;
+                    if (raycastable.HandleRaycast(this))
+                    {
+                        SetCursor(raycastable.GetCursorType());
+                        return true;
+                    }
                 }
+            }
+            return false;
+        }
 
-                // 좌클릭 시 공격 명령
-                if (Input.GetMouseButtonDown(0))
-                {
-                    GetComponent<Fighter>().Attack(target.gameObject);
-                }
-                // 전투 상호작용 대상이므로 true 반환(이동 로직 막기)
+        private bool InteractWithUI()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
                 return true;
             }
-            // 전투 대상이 전혀 없다면 false
             return false;
         }
 
@@ -70,11 +90,30 @@ namespace RPG.Control
                 {
                     GetComponent<Mover>().StartMoveAction(hit.point, 1f);
                 }
+                SetCursor(CursorType.Movement);
                 //히트한 표면이 있으면 이동 상호작용 처리
                 return true;
             }
             // 아무것도 맞지 않음
             return false;
+        }
+
+        private void SetCursor(CursorType type)
+        {
+            CursorMapping mapping = GetCursorMapping(type);
+            Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
+        }
+
+        private CursorMapping GetCursorMapping(CursorType type)
+        {
+            foreach (CursorMapping mapping in cursorMappings)
+            {
+                if (mapping.type == type)
+                {
+                    return mapping;
+                }
+            }
+            return cursorMappings[0];
         }
 
         // 카메라 기준 마우스 레이

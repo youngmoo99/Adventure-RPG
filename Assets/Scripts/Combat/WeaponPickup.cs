@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Control;
 using UnityEngine;
 
 namespace RPG.Combat
 {
     // 플레이어가 접촉하면 해당 무기를 장착시키는 픽업 아이템
     // 일정 시간 숨겼다가 리스폰하는 기능 포함
-    public class WeaponPickup : MonoBehaviour
+    public class WeaponPickup : MonoBehaviour, IRaycastable
     {   
         // 획득 시 장착시킬 무기
         [SerializeField] Weapon weapon = null;
@@ -18,13 +19,18 @@ namespace RPG.Combat
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.tag == "Player")
-            {   
-                // 플레이어의 Fighter에 무기 장착
-                other.GetComponent<Fighter>().EquipWeapon(weapon);
-
-                // 픽업을 숨겼다가 일정 시간 후 다시 나타나도록 처리
-                StartCoroutine(HideForSeconds(respawnTime));
+            {
+                Pickup(other.GetComponent<Fighter>());
             }
+        }
+
+        private void Pickup(Fighter fighter)
+        {
+            // 플레이어의 Fighter에 무기 장착
+            fighter.EquipWeapon(weapon);
+
+            // 픽업을 숨겼다가 일정 시간 후 다시 나타나도록 처리
+            StartCoroutine(HideForSeconds(respawnTime));
         }
 
         // 숨김 -> 대기 -> 표시 코루틴
@@ -46,5 +52,21 @@ namespace RPG.Combat
                 child.gameObject.SetActive(shouldShow);
             }
         }
+
+        public bool HandleRaycast(PlayerController callingController)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Pickup(callingController.GetComponent<Fighter>());
+            }
+            return true;
+        }
+
+        public CursorType GetCursorType()
+        {
+            return CursorType.Pickup;
+        }
+
+
     }
 }
