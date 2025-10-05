@@ -8,6 +8,7 @@ using RPG.Core;
 using RPG.Resources;
 using System.Data;
 using UnityEngine.EventSystems;
+using UnityEngine.AI;
 
 namespace RPG.Control
 {
@@ -28,6 +29,7 @@ namespace RPG.Control
         }
 
         [SerializeField] CursorMapping[] cursorMappings = null;
+        [SerializeField] float maxNavMeshProjectionDistance = 1f;
 
         void Awake()
         {
@@ -52,7 +54,7 @@ namespace RPG.Control
 
         private bool InteractWithComponent()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            RaycastHit[] hits = RaycastAllSorted();
             foreach (RaycastHit hit in hits)
             {
                 IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
@@ -68,6 +70,20 @@ namespace RPG.Control
             return false;
         }
 
+        RaycastHit[] RaycastAllSorted()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            float[] distances = new float[hits.Length];
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                distances[i] = hits[i].distance;
+            }
+            Array.Sort(distances, hits);
+
+            return hits;
+        }
+
         private bool InteractWithUI()
         {
             if (EventSystem.current.IsPointerOverGameObject())
@@ -81,14 +97,14 @@ namespace RPG.Control
         // 이동 상호작용: 바닥 등 충돌 지점으로 이동
         private bool InteractWithMovement()
         {
-            RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+            Vector3 target;
+            bool hasHit = RaycastNavMesh(out target);
             if (hasHit)
             {   
                 // 좌클릭 누르고 있는 동안 계속 이동
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                    GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
                 SetCursor(CursorType.Movement);
                 //히트한 표면이 있으면 이동 상호작용 처리
@@ -96,6 +112,17 @@ namespace RPG.Control
             }
             // 아무것도 맞지 않음
             return false;
+        }
+
+        private bool RaycastNavMesh(out Vector3 target)
+        {
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+            //if (!hasHit) return false;
+
+            //NavMesh.SamplePosition(hit.point);
+            target = new Vector3();
+            return true;
         }
 
         private void SetCursor(CursorType type)
