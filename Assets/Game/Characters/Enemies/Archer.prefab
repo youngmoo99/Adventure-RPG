@@ -7,6 +7,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4242456705971467467, guid: 5bcb1e8c5b58c5043bc75cec0cb54092, type: 3}
+    - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.UI.DamageText.DamageTextSpawner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1511389512, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: chaseDistance
       value: 20

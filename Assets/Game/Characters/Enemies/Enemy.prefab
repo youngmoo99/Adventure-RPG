@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3199228007826444082, guid: 670ff199606273f4c8749400782eef08, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6576049712992913337, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -121,7 +125,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5b9b10c04d440409ecca0d193d677e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 40
+  regenerationPercentage: 70
+  takeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4242456705971467467, guid: 5bcb1e8c5b58c5043bc75cec0cb54092, type: 3}
+        m_TargetAssemblyTypeName: RPG.UI.DamageText.DamageTextSpawner, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 13
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1511389512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 4
-  supspicionTime: 5
+  suspicionTime: 5
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   waypointDwellTime: 2

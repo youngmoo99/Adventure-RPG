@@ -4,6 +4,7 @@ using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Resources
 {
@@ -14,6 +15,7 @@ namespace RPG.Resources
     {   
         // 레벨업 시 HP 회복 비율
         [SerializeField] float regenerationPercentage = 70f;
+        [SerializeField] UnityEvent takeDamage;
         // Lazy 초기화: 시작 시 최대 체력으로 세팅
         LazyValue<float> healthPoints;
 
@@ -32,7 +34,7 @@ namespace RPG.Resources
 
         }
         private void Start()
-        {   
+        {
             // LazyValue 강제 초기화 → 체력을 실제로 채움
             healthPoints.ForceInit();
         }
@@ -61,12 +63,17 @@ namespace RPG.Resources
             print(gameObject.name + " took damage : " + damage);
             // 체력을 0 이상으로 유지
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+
             // 사망 처리
             if (healthPoints.value == 0)
             {
                 Die();
                 // 가해자에게 경험치 보상
                 AwardExperience(instigator);
+            }
+            else
+            {
+                takeDamage.Invoke();
             }
         }
 
