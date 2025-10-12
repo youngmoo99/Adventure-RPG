@@ -13,12 +13,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4242456705971467467, guid: 5bcb1e8c5b58c5043bc75cec0cb54092, type: 3}
+      objectReference: {fileID: 3659407086651685019}
+    - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Spawn
@@ -29,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-      value: 13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8716177805292799786, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
       propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -101,3 +105,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bfbe2e8b331e2cc42be1591f949c0e41, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+--- !u!114 &3659407086651685019 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 714882575699403833, guid: c155e25e69d0d3947ab7b083ec84ddb3, type: 3}
+  m_PrefabInstance: {fileID: 4261274623444147362}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78226ddb764cc64caa24a8c49dc5e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

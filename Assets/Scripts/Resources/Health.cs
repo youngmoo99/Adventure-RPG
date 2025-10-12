@@ -15,7 +15,12 @@ namespace RPG.Resources
     {   
         // 레벨업 시 HP 회복 비율
         [SerializeField] float regenerationPercentage = 70f;
-        [SerializeField] UnityEvent takeDamage;
+        [SerializeField] TakeDamageEvent takeDamage;
+
+        [System.Serializable]
+        public class TakeDamageEvent : UnityEvent<float>
+        {
+        }
         // Lazy 초기화: 시작 시 최대 체력으로 세팅
         LazyValue<float> healthPoints;
 
@@ -73,7 +78,7 @@ namespace RPG.Resources
             }
             else
             {
-                takeDamage.Invoke();
+                takeDamage.Invoke(damage);
             }
         }
 
