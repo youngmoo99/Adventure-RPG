@@ -6,7 +6,7 @@ using RPG.Stats;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace RPG.Resources
+namespace RPG.Attributes
 {
     // 캐릭터의 HP 관리 클래스 
     // 1) 체력 계산, 데미지 처리, 죽음/부활 로직
@@ -97,13 +97,18 @@ namespace RPG.Resources
         // 체력 % 반환(UI 표시)
         public float GetPercentage()
         {
-            return 100 * (healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health));
+            return 100 * GetFraction();
+        }
+
+        public float GetFraction()
+        {
+            return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
 
         // 사망 처리
         private void Die()
-        {   
+        {
             // 이미 죽었으면 무시
             if (isDead) return;
 

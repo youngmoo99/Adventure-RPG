@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.Resources
+namespace RPG.Attributes
 {   
     // 플레이어 체력을 UI(Text)로 표시하는 클래스
     public class HealthDisplay : MonoBehaviour
