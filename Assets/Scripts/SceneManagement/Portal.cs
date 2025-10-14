@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using RPG.Control;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -51,17 +52,22 @@ namespace RPG.SceneManagement
 
             // 화면 어둡게
             Fader fader = FindObjectOfType<Fader>();
-            yield return fader.FadeOut(fadeOutTime);
 
             // 현재 씬 저장
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
-            wrapper.Save();
+            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            PlayerController playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            playerController.enabled = false;
+
+            yield return fader.FadeOut(fadeOutTime);
+            savingWrapper.Save();
 
             // 목표 씬 로드(비동기)
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
+            PlayerController newPlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            newPlayerController.enabled = false;
 
             // 로드 직후 저장 불러오기(씬 내 오브젝트 상태 복원)
-            wrapper.Load();
+            savingWrapper.Load();
 
             // 같은 destination을 가진 '반대편 포탈'을 찾아 플레이어 위치 갱신
             Portal otherPortal = GetOtherPortal();
@@ -69,12 +75,13 @@ namespace RPG.SceneManagement
             UpdatePlayer(otherPortal);
             
             // 위치 반영 후 한 번 더 저장
-            wrapper.Save();
+            savingWrapper.Save();
 
             // 약간 대기후 화면 밝게
             yield return new WaitForSeconds(fadeWaitTime);
-            yield return fader.FadeIn(fadeInTime);
+            fader.FadeIn(fadeInTime);
 
+            newPlayerController.enabled = true;
             // 임시 포탈 오브젝트 정리
             Destroy(gameObject);
         }

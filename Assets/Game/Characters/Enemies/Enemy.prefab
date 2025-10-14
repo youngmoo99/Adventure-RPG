@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3199228007826444082, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6576049712992913337, guid: 670ff199606273f4c8749400782eef08, type: 3}
       propertyPath: m_UseGravity
@@ -94,6 +94,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 748423053461084423, guid: 670ff199606273f4c8749400782eef08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 670ff199606273f4c8749400782eef08, type: 3}
+--- !u!82 &160016165280224189 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5030069075037262555, guid: 670ff199606273f4c8749400782eef08, type: 3}
+  m_PrefabInstance: {fileID: 5185359468432392550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &714882575699403833 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5628898224299500895, guid: 670ff199606273f4c8749400782eef08, type: 3}
@@ -152,6 +157,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 160016165280224189}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4139305790892936778}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1511389512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd9c396493e78048aeafea5b45f328c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &4139305790892936778 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9117498245688004396, guid: 670ff199606273f4c8749400782eef08, type: 3}
+  m_PrefabInstance: {fileID: 5185359468432392550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6349486278538938963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2300196843161176885, guid: 670ff199606273f4c8749400782eef08, type: 3}

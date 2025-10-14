@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using RPG.Core;
 using UnityEngine;
 using RPG.Attributes;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {   
@@ -21,6 +22,7 @@ namespace RPG.Combat
         [SerializeField] GameObject[] destroyOnHit = null;
         // 충돌 후 잔존 시간
         [SerializeField] float lifeAfterImpact = 2f;
+        [SerializeField] UnityEvent onHit;
         // 명중 대상
         Health target = null;
         GameObject instigator = null;
@@ -83,6 +85,8 @@ namespace RPG.Combat
             // 이동 정지
             speed = 0;
 
+            onHit.Invoke();
+            
             // 피격 이펙트 생성
             if (hitEffect != null)
             {

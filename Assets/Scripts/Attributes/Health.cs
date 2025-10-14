@@ -16,6 +16,7 @@ namespace RPG.Attributes
         // 레벨업 시 HP 회복 비율
         [SerializeField] float regenerationPercentage = 70f;
         [SerializeField] TakeDamageEvent takeDamage;
+        [SerializeField] UnityEvent onDie;
 
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
@@ -72,6 +73,7 @@ namespace RPG.Attributes
             // 사망 처리
             if (healthPoints.value == 0)
             {
+                onDie.Invoke();
                 Die();
                 // 가해자에게 경험치 보상
                 AwardExperience(instigator);
