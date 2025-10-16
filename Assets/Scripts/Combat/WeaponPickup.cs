@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Attributes;
 using RPG.Control;
 using UnityEngine;
 
@@ -11,7 +12,8 @@ namespace RPG.Combat
     public class WeaponPickup : MonoBehaviour, IRaycastable
     {   
         // 획득 시 장착시킬 무기
-        [SerializeField] Weapon weapon = null;
+        [SerializeField] WeaponConfig weapon = null;
+        [SerializeField] float healthToRestore = 0;
         // 리스폰까지의 시간
         [SerializeField] float respawnTime = 5;
 
@@ -20,17 +22,24 @@ namespace RPG.Combat
         {
             if (other.gameObject.tag == "Player")
             {
-                Pickup(other.GetComponent<Fighter>());
+                Pickup(other.gameObject);
             }
         }
 
-        private void Pickup(Fighter fighter)
+        private void Pickup(GameObject subject)
         {
-            // 플레이어의 Fighter에 무기 장착
-            fighter.EquipWeapon(weapon);
+            if (weapon != null)
+            {
+                // 플레이어의 Fighter에 무기 장착
+                subject.GetComponent<Fighter>().EquipWeapon(weapon);                
+            }
+            if (healthToRestore > 0)
+            {
+                subject.GetComponent<Health>().Heal(healthToRestore);
+            }
 
             // 픽업을 숨겼다가 일정 시간 후 다시 나타나도록 처리
-            StartCoroutine(HideForSeconds(respawnTime));
+                StartCoroutine(HideForSeconds(respawnTime));
         }
 
         // 숨김 -> 대기 -> 표시 코루틴
@@ -57,7 +66,7 @@ namespace RPG.Combat
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Pickup(callingController.GetComponent<Fighter>());
+                Pickup(callingController.gameObject);
             }
             return true;
         }

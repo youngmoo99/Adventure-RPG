@@ -21,7 +21,7 @@ namespace RPG.Combat
         // 왼손 소켓
         [SerializeField] Transform leftHandTransform = null;
         // 기본 무기
-        [SerializeField] Weapon defaultWeapon = null;
+        [SerializeField] WeaponConfig defaultWeapon = null;
         // 기본 무기 이름
         [SerializeField] string defaultWeaponName = "Unarmed";
 
@@ -29,24 +29,22 @@ namespace RPG.Combat
         // 마지막 공격 이후 경과 시간
         float timeSinceLastAttack = Mathf.Infinity;
         // 지연 초기화되는 현재 무기
+        WeaponConfig currentWeaponConfig;
         LazyValue<Weapon> currentWeapon;
 
         void Awake()
-        {   
-            // 시작 시 기본 무기 장착을 Lazy로 설정
-            currentWeapon = new LazyValue<Weapon>(GetSetupDefaultWeapon);
+        {
+            currentWeaponConfig = defaultWeapon;
+            currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
         }
 
-        private Weapon GetSetupDefaultWeapon()
+        private Weapon SetupDefaultWeapon()
         {   
-            // 기본 무기 장착 처리
-            AttachWeapon(defaultWeapon);
-            return defaultWeapon;
+            return AttachWeapon(defaultWeapon);
         }
 
         private void Start()
-        {   
-            // Lazy 강제 초기화(실제 장착 실행)
+        {
             currentWeapon.ForceInit();
         }
 
@@ -73,17 +71,17 @@ namespace RPG.Combat
         }
 
         // 외부에서 무기 장착
-        public void EquipWeapon(Weapon weapon)
+        public void EquipWeapon(WeaponConfig weapon)
         {
-            currentWeapon.value = weapon;
-            AttachWeapon(weapon);
+            currentWeaponConfig = weapon;
+            currentWeapon.value = AttachWeapon(weapon);
         }
 
         // 실제로 손 소켓에 무기 프리팹을 붙이고 애니메이터 교체
-        private void AttachWeapon(Weapon weapon)
+        private Weapon AttachWeapon(WeaponConfig weapon)
         {
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+            return weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         // 현재 타겟 반환
@@ -121,15 +119,20 @@ namespace RPG.Combat
 
             float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
 
-            if (currentWeapon.value.HasProjectile())
+            if (currentWeapon.value != null)
             {
-                currentWeapon.value.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
+                currentWeapon.value.OnHit();
             }
-            else
-            {
 
-                target.TakeDamage(gameObject, damage);
-            }
+            if (currentWeaponConfig.HasProjectile())
+                {
+                    currentWeaponConfig.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
+                }
+                else
+                {
+
+                    target.TakeDamage(gameObject, damage);
+                }
         }
 
         // Animation Event (Bow)
@@ -141,7 +144,7 @@ namespace RPG.Combat
         // 사거리 체크
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.value.GetRange();
+            return Vector3.Distance(transform.position, target.transform.position) < currentWeaponConfig.GetRange();
         }
 
         // 공격 가능한지 판단(Health가 있고 죽지 않았는가)
@@ -179,7 +182,7 @@ namespace RPG.Combat
         {
             if (stat == Stat.Damage)
             {
-                yield return currentWeapon.value.GetDamage();
+                yield return currentWeaponConfig.GetDamage();
             }
         }
         // IModifierProvider: 퍼센트 보정 제공(데미지 %)
@@ -187,20 +190,20 @@ namespace RPG.Combat
         {
             if (stat == Stat.Damage)
             {
-                yield return currentWeapon.value.GetPercentageBonus();
+                yield return currentWeaponConfig.GetPercentageBonus();
             }
         }
         // ISaveable: 현재 무기 이름 저장
         public object CaptureState()
         {
-            return currentWeapon.value.name;
+            return currentWeaponConfig.name;
         }
 
         // ISaveable: 저장된 이름으로 무기 로드 및 장착
         public void RestoreState(object state)
         {
             string weaponName = (string)state;
-            Weapon weapon = UnityEngine.Resources.Load<Weapon>(weaponName);
+            WeaponConfig weapon = UnityEngine.Resources.Load<WeaponConfig>(weaponName);
             EquipWeapon(weapon);
         }
 

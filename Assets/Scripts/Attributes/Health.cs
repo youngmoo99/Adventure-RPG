@@ -12,7 +12,7 @@ namespace RPG.Attributes
     // 1) 체력 계산, 데미지 처리, 죽음/부활 로직
     // 2) 경험치 보상, 레벨업 시 체력 회복, 세이브/로드 지원
     public class Health : MonoBehaviour, ISaveable
-    {   
+    {
         // 레벨업 시 HP 회복 비율
         [SerializeField] float regenerationPercentage = 70f;
         [SerializeField] TakeDamageEvent takeDamage;
@@ -29,7 +29,7 @@ namespace RPG.Attributes
         bool isDead = false;
 
         void Awake()
-        {   
+        {
             // BaseStats에서 초기 체력을 가져오도록 LazyValue 세팅
             healthPoints = new LazyValue<float>(GetInitialHealth);
         }
@@ -46,13 +46,13 @@ namespace RPG.Attributes
         }
 
         void OnEnable()
-        {   
+        {
             // 레벨업 이벤트 발생 시 체력 회복 등록
             GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
         }
 
         void OnDisable()
-        {   
+        {
             // 이벤트 해제 (메모리 누수 방지)
             GetComponent<BaseStats>().onLevelUp -= RegenerateHealth;
         }
@@ -82,6 +82,10 @@ namespace RPG.Attributes
             {
                 takeDamage.Invoke(damage);
             }
+        }
+        public void Heal(float healthToRestore)
+        {
+            healthPoints.value = Mathf.Min(healthPoints.value + healthToRestore, GetMaxHealthPoints());
         }
 
         // 현재 체력 반환
@@ -126,7 +130,7 @@ namespace RPG.Attributes
         {
             Experience experience = instigator.GetComponent<Experience>();
             if (experience == null) return;
-            
+
             // 공격자에게 경험치 지급
             experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
@@ -155,5 +159,7 @@ namespace RPG.Attributes
                 Die();
             }
         }
+
+
     }
 }
