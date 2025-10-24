@@ -20,6 +20,7 @@ namespace RPG.Control
         [SerializeField] float chaseDistance = 5f;
         // 의심 시간
         [SerializeField] float suspicionTime = 5f;
+        [SerializeField] float aggroCooldownTime = 5f;
         // 순찰 경로(없으면 가드 지점에 머무름)
         [SerializeField] PatrolPath patrolPath;
         // 웨이포인트 도달로 간주하는 거리
@@ -29,6 +30,7 @@ namespace RPG.Control
         [Range(0, 1)]
         // 순찰 시 이동속도
         [SerializeField] float patrolSpeedFraction = 0.2f;
+        [SerializeField] float shoutDistance = 5f;
         Fighter fighter;
         GameObject player;
         Health health;
@@ -39,6 +41,7 @@ namespace RPG.Control
         float timeSinceLastSawPlayer = Mathf.Infinity;
         // 현재 웨이포인트 도착 후 경과 시간
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
+        float timeSinceAggrevated = Mathf.Infinity;
         // 현재 웨이포인트 인덱스
         int currentWaypointIndex = 0;
 
@@ -68,7 +71,7 @@ namespace RPG.Control
             //사망 시 더 이상 처리하지 않음
             if (health.IsDead()) return;
             // 공격/추격 상태
-            if (InAttackRangeOfPlayer() && fighter.CanAttack(player))
+            if (IsAggrevated() && fighter.CanAttack(player))
             {
                 AttackBehaviour();
             }
@@ -86,11 +89,17 @@ namespace RPG.Control
             UpdateTimers();
         }
 
+        public void Aggrevate()
+        {
+            timeSinceAggrevated = 0;
+        }
+
         // 프레임마다 타이머 증가
         private void UpdateTimers()
         {
             timeSinceLastSawPlayer += Time.deltaTime;
             timeSinceArrivedAtWaypoint += Time.deltaTime;
+            timeSinceAggrevated += Time.deltaTime;
         }
 
         // 의심 상태 : 현재 행동을 취소하고 주변을 살피는 느낌
@@ -148,13 +157,27 @@ namespace RPG.Control
         {
             timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
+
+            aggrevateNearbyEnemies();
+        }
+
+        private void aggrevateNearbyEnemies()
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0);
+            foreach (RaycastHit hit in hits)
+            {
+                AIController ai = hit.collider.GetComponent<AIController>();
+                if (ai == null) continue;
+
+                ai.Aggrevate();
+            }
         }
 
         // 플레이어가 추격/공격 범위 안에 있는지 검사
-        private bool InAttackRangeOfPlayer()
+        private bool IsAggrevated()
         {
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-            return distanceToPlayer < chaseDistance;
+            return distanceToPlayer < chaseDistance || timeSinceAggrevated < aggroCooldownTime;
         }
 
         // 에디터에서 선택 시 추격 반경 시각화
