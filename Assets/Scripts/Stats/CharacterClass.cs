@@ -7,6 +7,7 @@ namespace RPG.Stats
         Grunt,
         Mage,
         Archer,
+        Spearman,
         Knight
     }
 }

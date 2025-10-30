@@ -5043,7 +5043,7 @@ GameObject:
   - component: {fileID: 1961561451110023097}
   - component: {fileID: 7951023899554253295}
   m_Layer: 0
-  m_Name: Fireball Projectiles
+  m_Name: Fireball Projectiles Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
