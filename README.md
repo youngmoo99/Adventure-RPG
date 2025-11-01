@@ -1,5 +1,5 @@
 # 🚀 Adventure RPG
-<img src="LaserDefenderMain.PNG"/>
+<img src="Adventure RPG BG.png"/>
 Unity 3D RPG 전투 게임
 
 ## 🎮 게임 특징
