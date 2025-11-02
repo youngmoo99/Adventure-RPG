@@ -3,7 +3,7 @@
 > Unity 3D 전투 기반 RPG 게임 — 클릭 이동, 전투, 무기 장착, 세이브/로드 시스템까지 완비된 어드벤처.
 > A Unity 3D action RPG featuring click-to-move, combat, weapon pickup, and save/load functionality.
 
-Adventure RPG BG.png
+<img src="LaserDefenderMain.PNG"/>
 
 <p align="center">
   <a href="#demo">🎮 데모 보기</a> •
