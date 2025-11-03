@@ -15,7 +15,6 @@
 
 <p>
   <img alt="Unity" src="https://img.shields.io/badge/Unity-2021.3.45f1_LTS-black?logo=unity"/>
-  <img alt="License" src="https://img.shields.io/badge/License-MIT-green"/>
   <img alt="Platform" src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-blue"/>
 </p>
 
@@ -30,10 +29,9 @@
 
 ---
 
-## Demo / 데모 보기 {#demo}
+## 플레이 영상 {#video}
 
 * ▶️ **Gameplay Video**: 준비 중
-* 📦 **Windows 빌드**: 준비 중
 
 > 플레이어는 마을을 탐험하고, 무기를 습득해 적을 처치하며 경험치를 쌓습니다.
 
@@ -43,7 +41,7 @@
 
 * 🧭 **마우스 클릭 이동 시스템**: NavMesh 기반 경로 탐색 (좌클릭으로 목적지 이동)
 * ⚔️ **전투 시스템**: 클릭 타겟 공격, 적 체력 UI 표시
-* 🪓 **무기 픽업 및 장착**: 필드의 무기(검, 지팡이 등)를 클릭해 장비 가능
+* 🪓 **무기 픽업 및 장착**: 필드의 무기(검, 창, 활, 지팡이 등)를 클릭해 장비 가능
 * 💾 **세이브/로드 시스템**: JSON 기반 세이브 파일 관리 (저장/불러오기/삭제)
 * 🏠 **마을/필드 구조**: 조명과 물리기반 재질로 구현된 마을과 하천 환경
 
@@ -51,7 +49,7 @@
 
 ## 기술 스택 / Tech Stack {#tech-stack}
 
-**엔진**: Unity 2022.3 LTS (URP)
+**엔진**: Unity 2021.3.45f1 LTS (URP)
 
 **언어**: C#
 
@@ -112,9 +110,9 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 | 이동    | 마우스 좌클릭           |
 | 공격    | 마우스 좌클릭 (적 타겟 시)  |
 | 무기 줍기 | 무기 클릭             |
-| 저장    | ESC → Save        |
-| 불러오기  | ESC → Load        |
-| 삭제    | ESC → Delete Save |
+| 저장    | S        |
+| 불러오기  | L        |
+| 삭제    | Delete |
 
 ---
 
