@@ -14,7 +14,7 @@
 </p>
 
 <p>
-  <img alt="Unity" src="https://img.shields.io/badge/Unity-2022.3_LTS-black?logo=unity"/>
+  <img alt="Unity" src="https://img.shields.io/badge/Unity-2021.3.45f1_LTS-black?logo=unity"/>
   <img alt="License" src="https://img.shields.io/badge/License-MIT-green"/>
   <img alt="Platform" src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-blue"/>
 </p>
