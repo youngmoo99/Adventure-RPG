@@ -156,5 +156,5 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 
 ## 📬 연락처 / Contact
 
-* **이메일**: [rladuan612@gmaol.com](mailto:your.email@example.com)
-* **포트폴리오**: [https://your-portfolio.site](https://www.naver.com)
+* **이메일**: [rladuan612@gmail.com](mailto:rladuan612@gmail.com)
+* **포트폴리오**: [포트폴리오](https://www.naver.com)
