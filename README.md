@@ -4,7 +4,7 @@
 > A Unity 3D action RPG featuring click-to-move, combat, weapon pickup, and save/load functionality.
 
 <p align="center">
-  <a href="#demo">🎮 데모 보기</a> •
+  <a href="#demo">🎮 플레이 영상</a> •
   <a href="#features">⚔️ 주요 특징</a> •
   <a href="#tech-stack">🧰 기술 스택</a> •
   <a href="#setup">⚙️ 설치/실행</a> •
