@@ -27,7 +27,7 @@
 
 ---
 
-## 🎮 플레이 영상 {#demo}
+<h2 id="demo">🎮 플레이 영상</h2>
 
 * ▶️ **Gameplay Video**: 준비 중
 
@@ -35,7 +35,7 @@
 
 ---
 
-## ⚔️ 주요 특징 / Features {#features}
+<h2 id="features">⚔️ 주요 특징 / Features</h2>
 
 * 🧭 **마우스 클릭 이동 시스템** — NavMesh 기반 경로 탐색 (좌클릭 이동)
 * ⚔️ **전투 시스템** — 타겟 기반 공격, 애니메이션 및 데미지 연동
@@ -46,7 +46,7 @@
 
 ---
 
-## 🧰 기술 스택 / Tech Stack {#tech-stack}
+<h2 id="tech-stack">🧰 기술 스택 / Tech Stack</h2>
 
 **엔진**: Unity 2021.3.45f1 LTS (URP)
 
@@ -67,7 +67,7 @@
 
 ---
 
-## 🏗️ 프로젝트 구조 / Architecture
+<h2 id="architecture">🏗️ 프로젝트 구조 / Architecture</h2>
 
 ```
 Assets/
@@ -91,7 +91,7 @@ Assets/
 
 ---
 
-## ⚙️ 설치 및 실행 / Setup {#setup}
+<h2 id="setup">⚙️ 설치 및 실행 / Setup</h2>
 
 1. 저장소 클론:
 
@@ -105,7 +105,7 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 
 ---
 
-## 🎮 조작법 / Controls
+<h2 id="controls">🎮 조작법 / Controls</h2>
 
 | 동작    | 조작         |
 | ----- | ---------- |
@@ -118,7 +118,7 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 
 ---
 
-## 🖼️ 스크린샷 / Screenshots {#screenshots}
+<h2 id="screenshots">🖼️ 스크린샷 / Screenshots</h2>
 
 <p align="center">
   <img src="Adventure RPG BG.png" width="720"/>
@@ -128,7 +128,7 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 
 ---
 
-## 🚀 향후 계획 / Roadmap
+<h2 id="roadmap">🚀 향후 계획 / Roadmap</h2>
 
 * [ ] 퀘스트 시스템 (NPC 대화 및 목표 추적)
 * [ ] 보스 AI 및 전투 패턴 추가
@@ -138,7 +138,7 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 
 ---
 
-## 👤 제작자 / Credits
+<h2 id="credits">👤 제작자 / Credits</h2>
 
 * **기획·개발**: 김영무 (Kim YoungMoo)
 * **아트 리소스**: Lowpoly Village Pack (Unity Asset Store)
@@ -147,14 +147,14 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 
 ---
 
-## 🪪 라이선스 / License
+<h2 id="license">🪪 라이선스 / License</h2>
 
 * **소스코드**: MIT License
 * **애셋**: 각 저작권자 명시 (비상업적 포트폴리오 용도)
 
 ---
 
-## 📬 연락처 / Contact
+<h2 id="contact">📬 연락처 / Contact</h2>
 
 * **이메일**: [rladuan612@gmail.com](mailto:rladuan612@gmail.com)
 * **포트폴리오**: [포트폴리오](https://www.naver.com)
