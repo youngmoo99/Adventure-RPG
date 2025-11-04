@@ -27,7 +27,7 @@
 
 ---
 
-## 플레이 영상 {#video}
+## 🎮 플레이 영상 {#demo}
 
 * ▶️ **Gameplay Video**: 준비 중
 
@@ -35,59 +35,63 @@
 
 ---
 
-## 주요 특징 / Features {#features}
+## ⚔️ 주요 특징 / Features {#features}
 
-* 🧭 **마우스 클릭 이동 시스템**: NavMesh 기반 경로 탐색 (좌클릭으로 목적지 이동)
-* ⚔️ **전투 시스템**: 클릭 타겟 공격, 적 체력 UI 표시
-* 🪓 **무기 픽업 및 장착**: 필드의 무기(검, 창, 활, 지팡이 등)를 클릭해 장비 가능
-* 💾 **세이브/로드 시스템**: JSON 기반 세이브 파일 관리 (저장/불러오기/삭제)
-* 🏠 **마을/필드 구조**: 조명과 물리기반 재질로 구현된 마을과 하천 환경
+* 🧭 **마우스 클릭 이동 시스템** — NavMesh 기반 경로 탐색 (좌클릭 이동)
+* ⚔️ **전투 시스템** — 타겟 기반 공격, 애니메이션 및 데미지 연동
+* 🪓 **무기 픽업 및 장착** — 필드 무기를 클릭하면 자동 장비
+* 💾 **세이브/로드 시스템** — 파일 기반 저장/불러오기/삭제
+* 🧠 **적 AI 시스템** — 추격 / 의심 / 순찰 상태 머신 구현
+* 🏠 **씬 전환 및 시네마틱** — Timeline, Fader를 활용한 전환
 
 ---
 
-## 기술 스택 / Tech Stack {#tech-stack}
+## 🧰 기술 스택 / Tech Stack {#tech-stack}
 
 **엔진**: Unity 2021.3.45f1 LTS (URP)
 
 **언어**: C#
 
-**툴**: Rider / Visual Studio Code / Git / Blender / Audacity
+**툴체인**: Rider / Visual Studio Code / Git / Blender / Audacity
 
-**주요 시스템**:
+**핵심 시스템 구성**:
 
-* **NavMesh Agent**: 이동 및 추적 AI
-* **Animator Controller**: 공격/대기/피격 애니메이션 전환
-* **Cinemachine**: 3인칭 카메라 추적
-* **ScriptableObject**: 캐릭터/무기 스탯 관리
-* **SavingWrapper / Fader**: 씬 전환 및 세이브 관리
+| 시스템                     | 설명                       |
+| ----------------------- | ------------------------ |
+| **NavMesh Agent**       | 이동 및 추적 AI 구현            |
+| **Animator Controller** | 공격/피격/대기 상태 관리           |
+| **ScriptableObject**    | 무기·스탯 데이터 관리             |
+| **Saving System**       | ISaveable 기반 세이브/로드 구조   |
+| **Cinemachine**         | 카메라 추적 및 전환              |
+| **Timeline**            | 컷씬 연출 (CinematicTrigger) |
 
 ---
 
-## 프로젝트 구조 / Architecture
+## 🏗️ 프로젝트 구조 / Architecture
 
 ```
 Assets/
-  Scripts/
-    Player/
-      PlayerController.cs
-      WeaponPickup.cs
-    Enemy/
-      EnemyAIController.cs
-    Systems/
-      SaveSystem.cs
-      GameManager.cs
-      UIManager.cs
+  RPG/
+    Core/            → ActionScheduler, PersistentObjectSpawner 등 핵심 로직
+    Control/         → PlayerController, AIController, IRaycastable, CursorType
+    Combat/          → Fighter, Weapon, WeaponConfig, Projectile, CombatTarget
+    Attributes/      → Health, HealthBar, HealthDisplay
+    Stats/           → BaseStats, Experience, Stat, Progression
+    Cinematics/      → CinematicTrigger, CinematicControlRemover
+    Saving/          → SavingSystem, SaveableEntity, ISaveable
+    SceneManagement/ → Fader, Portal, SavingWrapper
+    Movement/        → Mover (NavMesh 기반 이동)
 ```
 
-**주요 설계 패턴**:
+**설계 철학**:
 
-* 이벤트 기반 전투 처리 (OnAttack, OnDeath)
-* 세이브 데이터 직렬화(JSON SaveData)
-* 단방향 의존성 구조: Player → Systems
+* 모듈화된 구조 (Core / Control / Combat / Stats 등 단방향 의존성)
+* 인터페이스 기반 통신 (`IAction`, `ISaveable`, `IRaycastable`)
+* ScriptableObject로 데이터 주도형 설계 (무기, 스탯)
 
 ---
 
-## 설치 및 실행 / Setup {#setup}
+## ⚙️ 설치 및 실행 / Setup {#setup}
 
 1. 저장소 클론:
 
@@ -97,58 +101,59 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 
 2. Unity Hub에서 `AdventureRPG` 프로젝트 열기
 3. 패키지 복구 (Package Manager)
-4. `Assets/Scenes/MainScene.unity` 실행 후 ▶️ Play
+4. `Assets/Scenes/DemoScene.unity` 실행 후 ▶️ Play
 
 ---
 
-## 조작법 / Controls
+## 🎮 조작법 / Controls
 
-| 동작    | 조작                |
-| ----- | ----------------- |
-| 이동    | 마우스 좌클릭           |
-| 공격    | 마우스 좌클릭 (적 타겟 시)  |
-| 무기 줍기 | 무기 클릭             |
-| 저장    | S        |
-| 불러오기  | L        |
-| 삭제    | Delete |
+| 동작    | 조작         |
+| ----- | ---------- |
+| 이동    | 마우스 좌클릭    |
+| 공격    | 적 클릭 (좌클릭) |
+| 무기 줍기 | 무기 클릭      |
+| 저장    | S 키        |
+| 불러오기  | L 키        |
+| 삭제    | Delete 키   |
 
 ---
 
-## 스크린샷 / Screenshots {#screenshots}
+## 🖼️ 스크린샷 / Screenshots {#screenshots}
 
 <p align="center">
-  <img src="Adventure RPG BG.png"/>
+  <img src="Adventure RPG BG.png" width="720"/>
 </p>
 
-> 플레이어는 마을을 탐험하며 무기를 수집하고 전투를 통해 경험치를 쌓습니다.
+> 마을을 탐험하며 무기를 수집하고 전투를 통해 경험치를 쌓는 플레이 화면.
 
 ---
 
-## 향후 계획 / Roadmap
+## 🚀 향후 계획 / Roadmap
 
-* [ ] 퀘스트 시스템 추가 (NPC 대화 및 목표 추적)
-* [ ] 보스 몬스터 추가 및 AI 개선
+* [ ] 퀘스트 시스템 (NPC 대화 및 목표 추적)
+* [ ] 보스 AI 및 전투 패턴 추가
 * [ ] 인벤토리 및 장비창 UI 구현
 * [ ] 저장 슬롯 시스템 확장
+* [ ] 미니맵 및 퀘스트 트래커 추가
 
 ---
 
-## 제작자 / Credits
+## 👤 제작자 / Credits
 
-* 기획·개발: 나현 (Nayun)
-* 아트 리소스: Lowpoly Village Pack (Unity Asset Store)
-* 사운드: FreeSound.org / 자체 믹싱
-
----
-
-## 라이선스 / License
-
-* 소스코드: MIT License
-* 사용 애셋: 각 저작권자 표시 (비상업적 포트폴리오 용도)
+* **기획·개발**: 나현 (Nayun)
+* **아트 리소스**: Lowpoly Village Pack (Unity Asset Store)
+* **사운드**: FreeSound.org / 자체 믹싱
 
 ---
 
-## 연락처 / Contact
+## 🪪 라이선스 / License
 
-* 이메일: [your.email@example.com](mailto:your.email@example.com)
-* 포트폴리오: [https://your-portfolio.site](https://your-portfolio.site)
+* **소스코드**: MIT License
+* **애셋**: 각 저작권자 명시 (비상업적 포트폴리오 용도)
+
+---
+
+## 📬 연락처 / Contact
+
+* **이메일**: [your.email@example.com](mailto:your.email@example.com)
+* **포트폴리오**: [https://your-portfolio.site](https://your-portfolio.site)
