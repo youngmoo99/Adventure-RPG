@@ -140,9 +140,10 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 
 ## 👤 제작자 / Credits
 
-* **기획·개발**: 나현 (Nayun)
+* **기획·개발**: 김영무 (Kim YoungMoo)
 * **아트 리소스**: Lowpoly Village Pack (Unity Asset Store)
 * **사운드**: FreeSound.org / 자체 믹싱
+* **참고 강의**:  [https://www.udemy.com/course/rpg-core-combat-creater-intermediate-unity-c-korean/?kw=rpg+%EC%BD%94%EC%96%B4&src=sac&couponCode=MT251103G1](https://your-portfolio.site)
 
 ---
 
