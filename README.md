@@ -3,8 +3,6 @@
 > Unity 3D 전투 기반 RPG 게임 — 클릭 이동, 전투, 무기 장착, 세이브/로드 시스템까지 완비된 어드벤처.
 > A Unity 3D action RPG featuring click-to-move, combat, weapon pickup, and save/load functionality.
 
-<img src="Adventure RPG BG.png"/>
-
 <p align="center">
   <a href="#demo">🎮 데모 보기</a> •
   <a href="#features">⚔️ 주요 특징</a> •
@@ -119,7 +117,7 @@ git clone https://github.com/<YOUR_ID>/AdventureRPG.git
 ## 스크린샷 / Screenshots {#screenshots}
 
 <p align="center">
-  <img src="./docs/adventure_rpg_scene.png" width="70%"/>
+  <img src="Adventure RPG BG.png"/>
 </p>
 
 > 플레이어는 마을을 탐험하며 무기를 수집하고 전투를 통해 경험치를 쌓습니다.
