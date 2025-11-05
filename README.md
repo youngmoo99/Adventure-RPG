@@ -89,19 +89,6 @@ Assets/
 * 인터페이스 기반 통신 (`IAction`, `ISaveable`, `IRaycastable`)
 * ScriptableObject로 데이터 주도형 설계 (무기, 스탯)
 
----
-
-<h2 id="setup">⚙️ 설치 및 실행 / Setup</h2>
-
-1. 저장소 클론:
-
-```bash
-git clone https://github.com/youngmoo99/Adventure-RPG
-```
-
-2. Unity Hub에서 `AdventureRPG` 프로젝트 열기
-3. 패키지 복구 (Package Manager)
-4. `Assets/Scenes/DemoScene.unity` 실행 후 ▶️ Play
 
 ---
 
@@ -145,12 +132,6 @@ git clone https://github.com/youngmoo99/Adventure-RPG
 * **사운드**: FreeSound.org / 자체 믹싱
 * **참고 강의**: [강의 링크](https://www.udemy.com/course/rpg-core-combat-creater-intermediate-unity-c-korean/?kw=rpg+%EC%BD%94%EC%96%B4&src=sac&couponCode=MT251103G1)
 
----
-
-<h2 id="license">🪪 라이선스 / License</h2>
-
-* **소스코드**: MIT License
-* **애셋**: 각 저작권자 명시 (비상업적 포트폴리오 용도)
 
 ---
 
