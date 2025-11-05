@@ -96,7 +96,7 @@ Assets/
 1. 저장소 클론:
 
 ```bash
-git clone https://github.com/<YOUR_ID>/AdventureRPG.git
+git clone https://github.com/youngmoo99/Adventure-RPG
 ```
 
 2. Unity Hub에서 `AdventureRPG` 프로젝트 열기
