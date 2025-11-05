@@ -110,7 +110,7 @@ Assets/
 <p align="center">
   <img src="adventrue_mainscreen.png" width="720"/>
   <img src="Adventure RPG SCREEN1.png" width="720"/>
-  <img src="Adventure RPG SCREEN2.pngg" width="720"/>
+  <img src="Adventure RPG SCREEN2.png" width="720"/>
 </p>
 
 > 마을을 탐험하며 무기를 수집하고 전투를 통해 경험치를 쌓는 플레이 화면.
