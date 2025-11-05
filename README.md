@@ -121,7 +121,7 @@ git clone https://github.com/youngmoo99/Adventure-RPG
 <h2 id="screenshots">🖼️ 스크린샷 / Screenshots</h2>
 
 <p align="center">
-  <img src="Adventure RPG BG.png" width="720"/>
+  <img src="adventrue_mainscreen.png" width="720"/>
 </p>
 
 > 마을을 탐험하며 무기를 수집하고 전투를 통해 경험치를 쌓는 플레이 화면.
