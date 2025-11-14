@@ -29,7 +29,7 @@
 
 <h2 id="demo">🎮 플레이 영상</h2>
 
-* ▶️ **Gameplay Video**: 준비 중
+* ▶️ **Gameplay Video**: [플레이 영상](https://youtu.be/75iazxsAO-k)
 
 > 플레이어는 마을을 탐험하고, 무기를 습득해 적을 처치하며 경험치를 쌓습니다.
 
