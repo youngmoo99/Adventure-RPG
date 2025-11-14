@@ -20,7 +20,7 @@ namespace RPG.Control
 
                 // 웨이포인트(구) 표시
                 Gizmos.DrawSphere(GetWaypoint(i), waypointGizmoRadius);
-                // 다음 웨이포인트로 연결선 표시(루프)
+                // 루프 형태의 연결선
                 Gizmos.DrawLine(GetWaypoint(i), GetWaypoint(j));
             }
         }

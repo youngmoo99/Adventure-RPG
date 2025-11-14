@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 namespace RPG.Combat
 {   
-    //플레이어가 현재 타겟팅 중인 적의 체력을 UI(Text)로 표시
+    // 플레이어가 현재 타겟팅 중인 적의 체력을 UI(Text)로 표시
     public class EnemyHealthDisplay : MonoBehaviour
-    {
+    {   
+        // 플레이어의 Fighter 참조
         Fighter fighter;
         void Awake()
         {   
-            // Player 태그로 플레이어를 찾고 Fighter를 캐싱
+            // Player 태그에서 Fighter 가져오기(캐싱)
             fighter = GameObject.FindWithTag("Player").GetComponent<Fighter>();
         }
 

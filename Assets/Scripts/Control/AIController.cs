@@ -20,16 +20,21 @@ namespace RPG.Control
         [SerializeField] float chaseDistance = 5f;
         // 의심 시간
         [SerializeField] float suspicionTime = 5f;
+        // 어그로 유지 시간
         [SerializeField] float aggroCooldownTime = 5f;
+
         // 순찰 경로(없으면 가드 지점에 머무름)
         [SerializeField] PatrolPath patrolPath;
+
         // 웨이포인트 도달로 간주하는 거리
         [SerializeField] float waypointTolerance = 1f;
+
         // 웨이포인트에서 머무는 시간
         [SerializeField] float waypointDwellTime = 3f;
         [Range(0, 1)]
         // 순찰 시 이동속도
         [SerializeField] float patrolSpeedFraction = 0.2f;
+        // 주변 적 어그로 판정
         [SerializeField] float shoutDistance = 5f;
         Fighter fighter;
         GameObject player;
@@ -41,6 +46,7 @@ namespace RPG.Control
         float timeSinceLastSawPlayer = Mathf.Infinity;
         // 현재 웨이포인트 도착 후 경과 시간
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
+        // 마지막 어그로 후 경과 시간
         float timeSinceAggrevated = Mathf.Infinity;
         // 현재 웨이포인트 인덱스
         int currentWaypointIndex = 0;
@@ -52,7 +58,7 @@ namespace RPG.Control
             health = GetComponent<Health>();
             mover = GetComponent<Mover>();
 
-            // 지연 초기화 : 현재 위치를 가드 지점으로 사용
+            // 현재 위치를 가드 지점으로 Lazy 초기화
             guardPosition = new LazyValue<Vector3>(GetGuardPosition);
         }
 
@@ -68,8 +74,9 @@ namespace RPG.Control
         }
         void Update()
         {
-            //사망 시 더 이상 처리하지 않음
+            //사망 시 동작 중단
             if (health.IsDead()) return;
+
             // 공격/추격 상태
             if (IsAggrevated() && fighter.CanAttack(player))
             {
@@ -94,7 +101,7 @@ namespace RPG.Control
             timeSinceAggrevated = 0;
         }
 
-        // 프레임마다 타이머 증가
+        // 각 타이머 갱신
         private void UpdateTimers()
         {
             timeSinceLastSawPlayer += Time.deltaTime;
@@ -119,6 +126,7 @@ namespace RPG.Control
                 if (AtWaypoint())
                 {
                     timeSinceArrivedAtWaypoint = 0;
+                    // 다음 웨이포인트로
                     CycleWaypoint();
                 }
 
@@ -161,6 +169,7 @@ namespace RPG.Control
             aggrevateNearbyEnemies();
         }
 
+        // 주변 적 어그로(구 반경 내 AIController에 Aggrevate 전달)
         private void aggrevateNearbyEnemies()
         {
             RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0);
@@ -173,7 +182,7 @@ namespace RPG.Control
             }
         }
 
-        // 플레이어가 추격/공격 범위 안에 있는지 검사
+        // 추격 조건: 거리 이내 or 최근 어그로 유지 중
         private bool IsAggrevated()
         {
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);

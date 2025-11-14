@@ -33,7 +33,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8820948083306909269, guid: ac911dff3c449f54bbd04beffadcf9c1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.91
+      value: -0.14
       objectReference: {fileID: 0}
     - target: {fileID: 8820948083306909269, guid: ac911dff3c449f54bbd04beffadcf9c1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -120,10 +120,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2376529688222360987, guid: 3e64a1e8fc5623f42911ec91d977f380, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5803960598554900307, guid: 3e64a1e8fc5623f42911ec91d977f380, type: 3}
       propertyPath: weapon
       value: 
       objectReference: {fileID: 11400000, guid: 68c8b21a56387ca43914e37fb89d509a, type: 2}
+    - target: {fileID: 7996115078531712252, guid: 3e64a1e8fc5623f42911ec91d977f380, type: 3}
+      propertyPath: m_Center.z
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e64a1e8fc5623f42911ec91d977f380, type: 3}
 --- !u!4 &8734580495667075282 stripped

@@ -4,7 +4,9 @@ using RPG.Attributes;
 
 namespace RPG.Combat
 {   
-    // 무기 데이터(데미지/사거리/애니메이터/ 투사체)를 보관하는 SO
+    // 무기 데이터(데미지/사거리/애니메이터/투사체)를 보관하는 ScriptableObject
+    // - Spawn: 손 소켓에 프리팹 장착 + 애니메이터 오버라이드 처리
+    // - LaunchProjectile: 투사체 발사
     [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make New Weapon", order = 0)]
     public class WeaponConfig : ScriptableObject
     {   
@@ -26,7 +28,7 @@ namespace RPG.Combat
         // 손 소켓 아래에 붙을 이름(교체/삭제 시 탐색용)
         const string weaponName = "Weapon";
 
-        // 손 소켓에 무기를 생성하고 애니메이터 Override 적용
+        // 손 소켓에 무기를 장착하고 애니메이터 오버라이드 적용
         public Weapon Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
             // 예전 무기 제거
@@ -34,7 +36,7 @@ namespace RPG.Combat
 
             Weapon weapon = null;
 
-            // 프리팹이 있으면 손 소켓에 인스턴스 생성
+            // 무기 프리팹 장착
             if (equippedPrefab != null)
             {
                 Transform handTransform = GetTransform(rightHand, leftHand);
@@ -43,7 +45,7 @@ namespace RPG.Combat
                 weapon.gameObject.name = weaponName;
             }
 
-            // 애미네이터 Override 적용(없으면 원래 컨트롤러로 복원)
+            // 애니메이터 오버라이드 적용(없으면 기본 컨트롤러 원복)
             var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
             if (animatorOverride != null)
             {
@@ -51,7 +53,7 @@ namespace RPG.Combat
             }
             else if (overrideController != null)
             {
-                // 무기의 Override가 없을 때 기존 Override를 원본 컨트롤러로 되돌림
+                // 기존에 다른 무기가 덮어쓴 오버라이드가 남아있다면 원본으로 되돌림
                 animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
             }
 
@@ -68,12 +70,12 @@ namespace RPG.Combat
             }
             if (oldWeapon == null) return;
 
-            // 즉시 같은 이름 탐색되지 않도록 변경
+            // 즉시 같은 이름으로 다시 탐색되지 않도록 변경
             oldWeapon.name = "DESTROYING";
             Destroy(oldWeapon.gameObject);
         }
         
-        // 현재 무기를 어느 손에 붙일지 결정
+        // 어느 손에 장착할지 결정
         private Transform GetTransform(Transform rightHand, Transform leftHand)
         {
             Transform handTransform;
@@ -88,7 +90,7 @@ namespace RPG.Combat
             return projectile != null;
         }
 
-        // 투사체 발사(무기 손 위치에서 생성 후 타겟으로 세팅)
+        // 투사체 발사(무기 손 위치에서 생성 후 목표/공격자/데미지 세팅)
         public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator, float calculatedDamage)
         {
             Projectile projectileInstance = Instantiate(projectile, GetTransform(rightHand, leftHand).position, Quaternion.identity);

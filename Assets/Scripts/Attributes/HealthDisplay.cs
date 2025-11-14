@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace RPG.Attributes
 {   
-    // 플레이어 체력을 UI(Text)로 표시하는 클래스
+    // 플레이어 현재 체력을 UI로 표시하는 클래스
     public class HealthDisplay : MonoBehaviour
     {
         Health health;

@@ -11,7 +11,8 @@ namespace RPG.Core
         [SerializeField] Transform target;
 
         void LateUpdate()
-        {
+        {   
+            // 카메라의 위치를 타깃의 위치로 맞춤
             transform.position = target.position;
         }
     }
