@@ -88,7 +88,7 @@ Assets/
 * 모듈화된 구조 (Core / Control / Combat / Stats 등 단방향 의존성)
 * 인터페이스 기반 통신 (`IAction`, `ISaveable`, `IRaycastable`)
 * ScriptableObject로 데이터 주도형 설계 (무기, 스탯)
-
+* 스프레드시트를 통한 플레이어 및 적 스탯 설정
 
 ---
 
