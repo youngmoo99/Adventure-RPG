@@ -228,6 +228,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cd9c396493e78048aeafea5b45f328c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8005595024038065412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4049124579582048101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff53dc6420c147846a32bf04f875cc16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnDelay: 10
 --- !u!82 &4139305790892936778 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 9117498245688004396, guid: 670ff199606273f4c8749400782eef08, type: 3}

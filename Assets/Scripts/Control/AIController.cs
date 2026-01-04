@@ -67,6 +67,12 @@ namespace RPG.Control
         {
             return transform.position;
         }
+
+        // 가드 지점 반환 (외부에서 접근 가능)
+        public Vector3 GetGuardPositionValue()
+        {
+            return guardPosition.value;
+        }
         void Start()
         {   
             //Lazy 강제 초기화
@@ -99,6 +105,17 @@ namespace RPG.Control
         public void Aggrevate()
         {
             timeSinceAggrevated = 0;
+        }
+
+        // AI 상태 리셋 (부활 시 호출)
+        public void ResetAIState()
+        {
+            timeSinceLastSawPlayer = Mathf.Infinity;
+            timeSinceAggrevated = Mathf.Infinity;
+            timeSinceArrivedAtWaypoint = Mathf.Infinity;
+            
+            // 현재 행동 취소
+            GetComponent<ActionScheduler>()?.CancelCurrentAction();
         }
 
         // 각 타이머 갱신

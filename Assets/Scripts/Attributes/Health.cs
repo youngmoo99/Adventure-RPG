@@ -161,6 +161,25 @@ namespace RPG.Attributes
             healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
         }
 
+        // 부활 처리
+        public void Resurrect()
+        {
+            // 이미 살아있으면 무시
+            if (!isDead) return;
+
+            isDead = false;
+            
+            // 체력을 최대 체력으로 회복
+            healthPoints.value = GetMaxHealthPoints();
+
+            // 애니메이션 리셋 (부활 애니메이션 트리거 또는 기본 상태로 복귀)
+            Animator animator = GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.Rebind();
+            }
+        }
+
         // 세이브
         public object CaptureState()
         {

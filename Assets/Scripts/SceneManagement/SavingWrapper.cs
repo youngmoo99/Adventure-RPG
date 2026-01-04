@@ -68,5 +68,38 @@ namespace RPG.SceneManagement
         {
             GetComponent<SavingSystem>().Delete(defaultSaveFile);
         }
+
+        // 저장된 씬을 다시 불러오기 (게임오버 시 재시작용)
+        public void RestartGame()
+        {
+            Debug.Log("SavingWrapper.RestartGame called");
+            StartCoroutine(RestartGameCoroutine());
+        }
+
+        // 게임 재시작 코루틴
+        private IEnumerator RestartGameCoroutine()
+        {
+            Debug.Log("RestartGameCoroutine started");
+            
+            // 페이드 아웃
+            Fader fader = FindObjectOfType<Fader>();
+            if (fader != null)
+            {
+                yield return fader.FadeOut(1f);
+            }
+            
+            // 세이브된 씬과 그 씬의 상태를 로드
+            yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFile);
+
+            // 화면을 먼저 검게 만든 후
+            if (fader != null)
+            {
+                fader.FadeOutImmediate();
+                // 천천히 밝게
+                yield return fader.FadeIn(fadeInTime);
+            }
+            
+            Debug.Log("RestartGameCoroutine finished");
+        }
     }
 }
